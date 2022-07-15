@@ -36,5 +36,5 @@ export const defaultTheme = {
 
   // Fonts-family
   'font-text': "'Roboto', sans-serif",
-  'font-header': "'Baloo 2', sans-serif",
+  'font-header': "'Baloo 2', cursive"
 };

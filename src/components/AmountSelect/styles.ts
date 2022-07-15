@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const AmountSelectContainer = styled.div`
   background-color: ${(props) => props.theme['base-button']};
   color: ${(props) => props.theme['base-title']};
-  height: 2rem;
+  height: 2.375rem;
   width: 4.5rem;
   display: flex;
   align-items: center;

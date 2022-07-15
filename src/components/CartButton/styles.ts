@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
-interface CarButtonProps {
+interface CartButtonProps {
   type: 'product' | 'cart';
 }
 
-export const CarButtonContainer = styled.div<CarButtonProps>`
+export const CartButtonContainer = styled.div<CartButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,7 +31,7 @@ export const CarButtonContainer = styled.div<CarButtonProps>`
     `}
 `;
 
-export const CarButtonBadge = styled.span`
+export const CartButtonBadge = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
