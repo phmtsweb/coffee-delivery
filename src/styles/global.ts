@@ -1,7 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-  
+
   * {
     margin: 0;
     padding: 0;
@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
 
   :focus {
     outline: 0;
-    box-shadow: 0 0 0 2px ${(props) => props.theme.primary};
+    box-shadow: 0 0 0 1px ${(props) => props.theme.primary};
   }
 
   body {
@@ -18,9 +18,15 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
 
-  border-style, input, textarea, button, body {
+  input, textarea, button, body {
     font-family: ${(props) => props.theme['font-text']};
     font-weight: 400;
     font-size: 1rem;
+  }
+
+  button {
+    border: 0;
+    outline: 0;
+    cursor: pointer;
   }
 `;
