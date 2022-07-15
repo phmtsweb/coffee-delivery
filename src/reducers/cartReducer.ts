@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import produce from 'immer';
 
 /* eslint-disable no-unused-vars */
@@ -6,7 +7,7 @@ export interface CartProduct {
   title: string;
   amount: number;
   price: number;
-  imageURL: string;
+  urlImage: string;
 }
 
 export interface CartState {
@@ -22,34 +23,64 @@ export enum ActionType {
 
 export interface CartActionProps {
   type: ActionType;
-  payload: CartProduct;
+  payload: {
+    productId: number;
+    amount?: number;
+  };
 }
 
-export function CartReducer(
-  cartState: CartState,
-  action: CartActionProps
+function addProduct(
+  product: CartProduct,
+  amount: number,
+  cartState: CartState
 ): CartState {
-  const { payload: product } = action;
+  if (amount <= 0) throw Error('Quantidade adicionada inválida');
+  if (product) {
+    return produce(cartState, (draft) => {
+      const productIndex = draft.products.findIndex(
+        (prod) => prod.id === product.id
+      );
+      if (productIndex >= 0) {
+        draft.products[productIndex].amount += amount;
+      } else {
+        const productToAdd = {
+          id: product.id,
+          title: product.title,
+          amount,
+          price: product.price,
+          urlImage: product.urlImage
+        };
+        draft.products.push(productToAdd);
+      }
+      console.log(product);
+      draft.total += product.price * amount;
+      draft.totalItems += amount;
+    });
+  } else {
+    throw Error('Operação inválida');
+  }
+}
+
+function removeProduct(productId: number, cartState: CartState): CartState {
+  return produce(cartState, (draft) => {
+    const product = draft.products.find((prod) => prod.id === productId);
+    if (!product) {
+      throw Error('Não há itens para remover');
+    }
+    draft.total -= product.amount * product.price;
+    draft.totalItems -= product.amount;
+    draft.products = draft.products.filter((prod) => prod.id !== productId);
+  });
+}
+
+export function CartReducer(cartState: CartState, action: any): CartState {
   switch (action.type) {
     case ActionType.ADD_PRODUCT:
-      return produce(cartState, (draft) => {
-        const productIndex = draft.products.findIndex(
-          (prod) => prod.id === product.id
-        );
-        if (productIndex >= 0) {
-          draft.products[productIndex].amount += product.amount;
-        } else {
-          draft.products.push(product);
-        }
-        draft.total += product.amount * product.price;
-        draft.totalItems += product.amount;
-      });
+      const { product, amount } = action.payload;
+      return addProduct(product, amount, cartState);
     case ActionType.REMOVE_PRODUCT:
-      return produce(cartState, (draft) => {
-        draft.products.filter((prod) => prod.id !== product.id);
-        draft.total -= product.amount * product.price;
-        draft.totalItems -= product.amount;
-      });
+      const { productId } = action.payload;
+      return removeProduct(productId, cartState);
     default:
       return cartState;
   }

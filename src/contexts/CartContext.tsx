@@ -1,13 +1,14 @@
 /* eslint-disable no-unused-vars */
 import { createContext, ReactNode, useReducer } from 'react';
 import { ActionType, CartProduct, CartReducer } from '../reducers/cartReducer';
+import { getProductById } from '../services/api';
 
 interface CartContextData {
   products: CartProduct[];
   total: number;
   totalItems: number;
-  addCart: (product: CartProduct) => void;
-  removeCart: (product: CartProduct) => void;
+  addCart: (productId: number, amount: number) => void;
+  removeCart: (productId: number) => void;
 }
 
 interface CartContextProviderProps {
@@ -23,11 +24,19 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     totalItems: 0
   });
 
-  function addCart(product: CartProduct): void {
-    dispatch({ type: ActionType.ADD_PRODUCT, payload: product });
+  async function addCart(productId: number, amount: number): Promise<void> {
+    const product = await getProductById(productId);
+    if (product)
+      dispatch({
+        type: ActionType.ADD_PRODUCT,
+        payload: {
+          product,
+          amount
+        }
+      });
   }
-  function removeCart(product: CartProduct): void {
-    dispatch({ type: ActionType.REMOVE_PRODUCT, payload: product });
+  function removeCart(productId: number): void {
+    dispatch({ type: ActionType.REMOVE_PRODUCT, payload: { productId } });
   }
 
   return (

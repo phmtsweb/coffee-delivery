@@ -13,12 +13,13 @@ import {
 } from './styles';
 
 interface CardCatalogProps {
-  id: string;
+  id: number;
   title: string;
   description: string;
   tags: string[];
   price: string;
   urlImage: string;
+  addCart: (productId: number, amount: number) => void;
 }
 
 export function CardCatalog({
@@ -27,9 +28,25 @@ export function CardCatalog({
   description,
   tags,
   price,
-  urlImage
+  urlImage,
+  addCart
 }: CardCatalogProps) {
   const [amount, setAmount] = useState(1);
+
+  function increment() {
+    setAmount((prevAmount) => prevAmount + 1);
+  }
+
+  function decrement() {
+    setAmount((prevAmount) => {
+      if (prevAmount <= 0) {
+        return 0;
+      } else {
+        return prevAmount - 1;
+      }
+    });
+  }
+
   return (
     <CardContainer>
       <CardImage src={urlImage} alt={title} />
@@ -44,10 +61,10 @@ export function CardCatalog({
         <ActionsContainer>
           <AmountSelect
             amount={amount}
-            increment={() => setAmount((state) => state + 1)}
-            decrement={() => setAmount((state) => state - 1)}
+            increment={increment}
+            decrement={decrement}
           />
-          <CartButton type="product" />
+          <CartButton type="product" actionCart={() => addCart(id, amount)} />
         </ActionsContainer>
       </CardActions>
     </CardContainer>

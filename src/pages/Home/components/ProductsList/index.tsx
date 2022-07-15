@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CardCatalog } from '../../../../components/CardCatalog';
+import { useCart } from '../../../../hooks/useCart';
 import {
   ProductsListContainer,
   ProductsSectionContainer,
@@ -7,7 +8,7 @@ import {
 } from './styles';
 
 interface ProductProps {
-  id: string;
+  id: number;
   title: string;
   description: string;
   tags: string[];
@@ -17,6 +18,7 @@ interface ProductProps {
 
 export function ProductsList() {
   const [products, setProducts] = useState<ProductProps[]>([]);
+  const { addCart } = useCart();
   useEffect(() => {
     (async function () {
       const result = await fetch('http://localhost:3000/cafes');
@@ -37,6 +39,7 @@ export function ProductsList() {
             tags={product.tags}
             price={product.price}
             urlImage={product.urlImage}
+            addCart={addCart}
           />
         ))}
       </ProductsListContainer>

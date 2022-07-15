@@ -19,7 +19,11 @@ export function Header() {
           <MapPin size={22} />
           <span>Petrolina, PE</span>
         </LocationContainer>
-        <CartButton amount={totalItems} type="cart" />
+        <CartButton
+          amount={totalItems}
+          type="cart"
+          actionCart={() => alert('click!')}
+        />
       </ButtonsContainer>
     </HeaderContainer>
   );

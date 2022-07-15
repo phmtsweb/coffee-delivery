@@ -14,7 +14,7 @@ export function AmountSelect({
 }: AmountSelectProps) {
   return (
     <AmountSelectContainer>
-      <button onClick={decrement}>
+      <button onClick={decrement} disabled={amount <= 1}>
         <Minus size={14} />
       </button>
       <span>{amount}</span>

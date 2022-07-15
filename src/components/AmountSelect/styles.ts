@@ -29,6 +29,10 @@ export const AmountSelectContainer = styled.div`
     align-items: center;
     transition: all 0.3s ease-in-out;
 
+    &:disabled {
+      cursor: not-allowed;
+    }
+
     &:first-child {
       border-top-left-radius: 6px;
       border-bottom-left-radius: 6px;
