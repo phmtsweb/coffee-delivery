@@ -12,7 +12,7 @@ interface ProductProps {
   title: string;
   description: string;
   tags: string[];
-  price: string;
+  price: number;
   urlImage: string;
 }
 
@@ -25,7 +25,7 @@ export function ProductsList() {
       const response = await result.json();
       setProducts(response);
     })();
-  }, []);
+  }, [setProducts]);
   return (
     <ProductsSectionContainer>
       <SectionTitle>Nossos cafés</SectionTitle>

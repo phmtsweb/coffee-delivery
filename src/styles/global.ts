@@ -2,6 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 
+  :root {
+    --toastify-color-progress-light: ${(props) => props.theme.primary};
+  }
+
   * {
     margin: 0;
     padding: 0;

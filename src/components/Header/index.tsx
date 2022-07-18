@@ -1,4 +1,5 @@
 import { MapPin } from 'phosphor-react';
+import { Link, useNavigate } from 'react-router-dom';
 import logoImg from '../../assets/logo-coffee.svg';
 import { useCart } from '../../hooks/useCart';
 import { CartButton } from '../CartButton';
@@ -11,9 +12,13 @@ import {
 
 export function Header() {
   const { totalItems } = useCart();
+  const navigate = useNavigate();
   return (
     <HeaderContainer>
-      <LogoImg src={logoImg} alt="" />
+      <Link to="/">
+        <LogoImg src={logoImg} alt="" />
+      </Link>
+
       <ButtonsContainer>
         <LocationContainer>
           <MapPin size={22} />
@@ -22,7 +27,7 @@ export function Header() {
         <CartButton
           amount={totalItems}
           type="cart"
-          actionCart={() => alert('click!')}
+          actionCart={() => navigate('/checkout', { replace: true })}
         />
       </ButtonsContainer>
     </HeaderContainer>

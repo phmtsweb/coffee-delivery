@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { useToast } from '../../hooks/useToast';
+import { formatNumberToCurrency } from '../../utils/formatNumberToCurrency';
 import { AmountSelect } from '../AmountSelect';
+import { CardToast } from '../CardToast';
 import { CartButton } from '../CartButton';
 import { Tags } from '../Tags';
 import {
@@ -17,9 +20,9 @@ interface CardCatalogProps {
   title: string;
   description: string;
   tags: string[];
-  price: string;
+  price: number;
   urlImage: string;
-  addCart: (productId: number, amount: number) => void;
+  addCart: (productId: number, amount: number) => Promise<void>;
 }
 
 export function CardCatalog({
@@ -33,6 +36,7 @@ export function CardCatalog({
 }: CardCatalogProps) {
   const [amount, setAmount] = useState(1);
 
+  const { toast } = useToast();
   function increment() {
     setAmount((prevAmount) => prevAmount + 1);
   }
@@ -47,6 +51,19 @@ export function CardCatalog({
     });
   }
 
+  async function handleAddCart() {
+    await addCart(id, amount);
+    toast(
+      <CardToast
+        urlImage={urlImage}
+        title={title}
+        amount={amount}
+        price={price}
+      />
+    );
+    setAmount(1);
+  }
+
   return (
     <CardContainer>
       <CardImage src={urlImage} alt={title} />
@@ -56,7 +73,7 @@ export function CardCatalog({
       <CardActions>
         <PriceContainer>
           <span>R$</span>
-          <strong>{price}</strong>
+          <strong>{formatNumberToCurrency(price)}</strong>
         </PriceContainer>
         <ActionsContainer>
           <AmountSelect
@@ -64,7 +81,7 @@ export function CardCatalog({
             increment={increment}
             decrement={decrement}
           />
-          <CartButton type="product" actionCart={() => addCart(id, amount)} />
+          <CartButton type="product" actionCart={async () => handleAddCart()} />
         </ActionsContainer>
       </CardActions>
     </CardContainer>

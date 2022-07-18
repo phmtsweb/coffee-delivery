@@ -1,115 +1,332 @@
 {
-  "cafes":  
-  [{
-    "id": 1,
-    "title": "Expresso Tradicional",
-    "description": "O tradicional café feito com água quente e grãos moídos",
-    "tags": ["tradicional"],
-    "price": 9.9,
-    "urlImage": "/expresso-tradicional.png"
-  },
-  {
-    "id": 2,
-    "title": "Expresso Americano",
-    "description": "Expresso diluído, menos intenso que o tradicional",
-    "tags": ["tradicional"],
-    "price": 9.9,
-    "urlImage": "/expresso-americano.png"
-  },
-  {
-    "id": 3,
-    "title": "Expresso Cremoso",
-    "description": "O café expresso tradicional com espuma cremosa",
-    "tags": ["tradicional"],
-    "price": 9.9,
-    "urlImage": "/expresso-cremoso.png"
-  },
-  {
-    "id": 4,
-    "title": "Expresso Gelado",
-    "description": "Bebida preparada com café expresso e cubos de gelo",
-    "tags": ["tradicional", "gelado"],
-    "price": 9.9,
-    "urlImage": "/expresso-gelado.png"
-  },
-  {
-    "id": 5,
-    "title": "Café com Leite",
-    "description": "Meio a meio de expresso tradicional com leite vaporizado",
-    "tags": ["tradicional", "com leite"],
-    "price": 9.9,
-    "urlImage": "/cafe-leite.png"
-  },
-  {
-    "id": 6,
-    "title": "Latte",
-    "description": "Uma dose de café expresso com o dobro de leite e espuma cremosa",
-    "tags": ["tradicional", "com leite"],
-    "price": 9.9,
-    "urlImage": "/latte.png"
-  },
-  {
-    "id": 7,
-    "title": "Capuccino",
-    "description": "Bebida com canela feita de doses iguais de café, leite e espuma",
-    "tags": ["tradicional", "com leite"],
-    "price": 11.9,
-    "urlImage": "/capuccino.png"
-  },
-  {
-    "id": 8,
-    "title": "Macchiato",
-    "description": "Café expresso misturado com um pouco de leite quente e espuma",
-    "tags": ["tradicional", "com leite"],
-    "price": 12.9,
-    "urlImage": "/macchiato.png"
-  },
-  {
-    "id": 9,
-    "title": "Mocaccino",
-    "description": "Café expresso com calda de chocolate, pouco leite e espuma",
-    "tags": ["tradicional", "com leite"],
-    "price": 12.9,
-    "urlImage": "/mocaccino.png"
-  },
-  {
-    "id": 10,
-    "title": "Chocolate Quente",
-    "description": "Bebida feita com chocolate dissolvido no leite quente e café",
-    "tags": ["especial", "com leite"],
-    "price": 12.9,
-    "urlImage": "/chocolate-quente.png"
-  },
-  {
-    "id": 11,
-    "title": "Cubano",
-    "description": "Drink gelado de café expresso com rum, creme de leite e hortelã",
-    "tags": ["especial", "alcoólico", "gelado"],
-    "price": 15.9,
-    "urlImage": "/cubano.png"
-  },
-  {
-    "id": 12,
-    "title": "Havaiano",
-    "description": "Bebida adocicada preparada com o café e leite de coco",
-    "tags": ["especial"],
-    "price": 12.9,
-    "urlImage": "/havaiano.png"
-  },
-  {
-    "id": 13,
-    "title": "Árabe",
-    "description": "Bebida preparada com grãos de café árabe e especiarias",
-    "tags": ["especial"],
-    "price": 12.9,
-    "urlImage": "/arabe.png"
-  },
-  {
-    "id": 14,
-    "title": "Irlandês",
-    "description": "Bebida a base de café, uísque irlandês, açúcar e chantilly",
-    "tags": ["especial", "alcoólico"],
-    "price": 20.9,
-    "urlImage": "/irlandes.png"
-  }]
+  "cafes": [
+    {
+      "id": 1,
+      "title": "Expresso Tradicional",
+      "description": "O tradicional café feito com água quente e grãos moídos",
+      "tags": [
+        "tradicional"
+      ],
+      "price": 9.9,
+      "urlImage": "/expresso-tradicional.png"
+    },
+    {
+      "id": 2,
+      "title": "Expresso Americano",
+      "description": "Expresso diluído, menos intenso que o tradicional",
+      "tags": [
+        "tradicional"
+      ],
+      "price": 9.9,
+      "urlImage": "/expresso-americano.png"
+    },
+    {
+      "id": 3,
+      "title": "Expresso Cremoso",
+      "description": "O café expresso tradicional com espuma cremosa",
+      "tags": [
+        "tradicional"
+      ],
+      "price": 9.9,
+      "urlImage": "/expresso-cremoso.png"
+    },
+    {
+      "id": 4,
+      "title": "Expresso Gelado",
+      "description": "Bebida preparada com café expresso e cubos de gelo",
+      "tags": [
+        "tradicional",
+        "gelado"
+      ],
+      "price": 9.9,
+      "urlImage": "/expresso-gelado.png"
+    },
+    {
+      "id": 5,
+      "title": "Café com Leite",
+      "description": "Meio a meio de expresso tradicional com leite vaporizado",
+      "tags": [
+        "tradicional",
+        "com leite"
+      ],
+      "price": 9.9,
+      "urlImage": "/cafe-leite.png"
+    },
+    {
+      "id": 6,
+      "title": "Latte",
+      "description": "Uma dose de café expresso com o dobro de leite e espuma cremosa",
+      "tags": [
+        "tradicional",
+        "com leite"
+      ],
+      "price": 9.9,
+      "urlImage": "/latte.png"
+    },
+    {
+      "id": 7,
+      "title": "Capuccino",
+      "description": "Bebida com canela feita de doses iguais de café, leite e espuma",
+      "tags": [
+        "tradicional",
+        "com leite"
+      ],
+      "price": 11.9,
+      "urlImage": "/capuccino.png"
+    },
+    {
+      "id": 8,
+      "title": "Macchiato",
+      "description": "Café expresso misturado com um pouco de leite quente e espuma",
+      "tags": [
+        "tradicional",
+        "com leite"
+      ],
+      "price": 12.9,
+      "urlImage": "/macchiato.png"
+    },
+    {
+      "id": 9,
+      "title": "Mocaccino",
+      "description": "Café expresso com calda de chocolate, pouco leite e espuma",
+      "tags": [
+        "tradicional",
+        "com leite"
+      ],
+      "price": 12.9,
+      "urlImage": "/mocaccino.png"
+    },
+    {
+      "id": 10,
+      "title": "Chocolate Quente",
+      "description": "Bebida feita com chocolate dissolvido no leite quente e café",
+      "tags": [
+        "especial",
+        "com leite"
+      ],
+      "price": 12.9,
+      "urlImage": "/chocolate-quente.png"
+    },
+    {
+      "id": 11,
+      "title": "Cubano",
+      "description": "Drink gelado de café expresso com rum, creme de leite e hortelã",
+      "tags": [
+        "especial",
+        "alcoólico",
+        "gelado"
+      ],
+      "price": 15.9,
+      "urlImage": "/cubano.png"
+    },
+    {
+      "id": 12,
+      "title": "Havaiano",
+      "description": "Bebida adocicada preparada com o café e leite de coco",
+      "tags": [
+        "especial"
+      ],
+      "price": 12.9,
+      "urlImage": "/havaiano.png"
+    },
+    {
+      "id": 13,
+      "title": "Árabe",
+      "description": "Bebida preparada com grãos de café árabe e especiarias",
+      "tags": [
+        "especial"
+      ],
+      "price": 12.9,
+      "urlImage": "/arabe.png"
+    },
+    {
+      "id": 14,
+      "title": "Irlandês",
+      "description": "Bebida a base de café, uísque irlandês, açúcar e chantilly",
+      "tags": [
+        "especial",
+        "alcoólico"
+      ],
+      "price": 20.9,
+      "urlImage": "/irlandes.png"
+    }
+  ],
+  "orders": [
+    {
+      "address": {
+        "cep": "56320670",
+        "logradouro": "Rua Império Serrano",
+        "cidade": "Petrolina",
+        "numero": "212",
+        "complemento": "",
+        "uf": "PE"
+      },
+      "products": [
+        {
+          "id": 3,
+          "title": "Expresso Cremoso",
+          "amount": 1,
+          "price": 9.9,
+          "urlImage": "/expresso-cremoso.png"
+        },
+        {
+          "id": 4,
+          "title": "Expresso Gelado",
+          "amount": 1,
+          "price": 9.9,
+          "urlImage": "/expresso-gelado.png"
+        },
+        {
+          "id": 11,
+          "title": "Cubano",
+          "amount": 2,
+          "price": 15.9,
+          "urlImage": "/cubano.png"
+        },
+        {
+          "id": 12,
+          "title": "Havaiano",
+          "amount": 2,
+          "price": 12.9,
+          "urlImage": "/havaiano.png"
+        },
+        {
+          "id": 8,
+          "title": "Macchiato",
+          "amount": 1,
+          "price": 12.9,
+          "urlImage": "/macchiato.png"
+        },
+        {
+          "id": 6,
+          "title": "Latte",
+          "amount": 1,
+          "price": 9.9,
+          "urlImage": "/latte.png"
+        }
+      ],
+      "total": 100.20000000000005,
+      "delivery": 3.5,
+      "paymentType": "cc",
+      "id": 1
+    },
+    {
+      "address": {
+        "cep": "50761340",
+        "logradouro": "Rua Ourém",
+        "cidade": "Recife",
+        "numero": "185",
+        "complemento": "Bl 1, Ap 104",
+        "uf": "PE",
+        "bairro": "San Martin"
+      },
+      "products": [
+        {
+          "id": 3,
+          "title": "Expresso Cremoso",
+          "amount": 1,
+          "price": 9.9,
+          "urlImage": "/expresso-cremoso.png"
+        },
+        {
+          "id": 4,
+          "title": "Expresso Gelado",
+          "amount": 1,
+          "price": 9.9,
+          "urlImage": "/expresso-gelado.png"
+        },
+        {
+          "id": 11,
+          "title": "Cubano",
+          "amount": 2,
+          "price": 15.9,
+          "urlImage": "/cubano.png"
+        },
+        {
+          "id": 12,
+          "title": "Havaiano",
+          "amount": 2,
+          "price": 12.9,
+          "urlImage": "/havaiano.png"
+        },
+        {
+          "id": 8,
+          "title": "Macchiato",
+          "amount": 1,
+          "price": 12.9,
+          "urlImage": "/macchiato.png"
+        },
+        {
+          "id": 6,
+          "title": "Latte",
+          "amount": 1,
+          "price": 9.9,
+          "urlImage": "/latte.png"
+        }
+      ],
+      "total": 100.20000000000005,
+      "delivery": 3.5,
+      "paymentType": "cd",
+      "id": 2
+    },
+    {
+      "address": {
+        "cep": "56326180",
+        "logradouro": "Rua da Seriema",
+        "cidade": "Petrolina",
+        "numero": "51",
+        "complemento": "",
+        "uf": "PE",
+        "bairro": "Dom Avelar"
+      },
+      "products": [
+        {
+          "id": 3,
+          "title": "Expresso Cremoso",
+          "amount": 1,
+          "price": 9.9,
+          "urlImage": "/expresso-cremoso.png"
+        },
+        {
+          "id": 4,
+          "title": "Expresso Gelado",
+          "amount": 1,
+          "price": 9.9,
+          "urlImage": "/expresso-gelado.png"
+        },
+        {
+          "id": 11,
+          "title": "Cubano",
+          "amount": 2,
+          "price": 15.9,
+          "urlImage": "/cubano.png"
+        },
+        {
+          "id": 12,
+          "title": "Havaiano",
+          "amount": 2,
+          "price": 12.9,
+          "urlImage": "/havaiano.png"
+        },
+        {
+          "id": 8,
+          "title": "Macchiato",
+          "amount": 1,
+          "price": 12.9,
+          "urlImage": "/macchiato.png"
+        },
+        {
+          "id": 6,
+          "title": "Latte",
+          "amount": 1,
+          "price": 9.9,
+          "urlImage": "/latte.png"
+        }
+      ],
+      "total": 100.20000000000005,
+      "delivery": 3.5,
+      "paymentType": "di",
+      "id": 3
+    }
+  ]
 }

@@ -3,22 +3,23 @@ import styled from 'styled-components';
 export const BannerContainer = styled.section`
   width: 100%;
   display: flex;
-  padding: 5.75rem 10rem;
+  padding: 10rem 0 0;
   flex-wrap: wrap;
 `;
 
 export const BannerImage = styled.img`
-  width: 29.75rem;
+  width: 100%;
   height: auto;
-  flex: 1;
+  flex: 1 0 29.75rem;
 `;
 
 export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex: 1.1;
+  flex: 1.1 0.5 40.25rem;
   margin-bottom: 1.5rem;
+  gap: 2.5rem;
 `;
 
 export const MainTextContainer = styled.div`
@@ -44,9 +45,10 @@ export const MainTextContainer = styled.div`
 export const ListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  gap: 1.25rem;
 
   > div {
-    flex: 1;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     gap: 1.25rem;

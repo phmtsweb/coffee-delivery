@@ -19,6 +19,9 @@ export const defaultTheme = {
   secondary: '#8047f8',
   'secondary-light': '#ebe5f9',
 
+  // Input
+  'invalid-color': '#f00',
+
   // Font-sizes
   'font-size-10': '0.625rem',
   'font-size-12': '0.75rem',

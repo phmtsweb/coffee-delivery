@@ -11,7 +11,9 @@ export function CartButton({ type, amount = 0, actionCart }: CartButtonProps) {
   return (
     <CartButtonContainer type={type} onClick={actionCart}>
       <ShoppingCartSimple size={18} />
-      {amount !== 0 && <CartButtonBadge>{amount}</CartButtonBadge>}
+      {amount !== 0 && (
+        <CartButtonBadge>{amount > 9 ? '9+' : amount}</CartButtonBadge>
+      )}
     </CartButtonContainer>
   );
 }

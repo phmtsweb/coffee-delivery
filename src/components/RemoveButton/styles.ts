@@ -8,7 +8,7 @@ export const RemoveButtonContainer = styled.button`
   color: ${(props) => props.theme['base-text']};
 
   width: 5.6875rem;
-  height: 2rem;
+  height: 2.375rem;
   font-size: ${(props) => props.theme['font-size-12']};
   text-transform: uppercase;
   transition: all 0.3s ease-in-out;

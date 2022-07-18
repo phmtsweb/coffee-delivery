@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { createContext, ReactNode, useReducer } from 'react';
+import { createContext, ReactNode, useEffect, useReducer } from 'react';
 import { ActionType, CartProduct, CartReducer } from '../reducers/cartReducer';
 import { getProductById } from '../services/api';
 
@@ -7,8 +7,9 @@ interface CartContextData {
   products: CartProduct[];
   total: number;
   totalItems: number;
-  addCart: (productId: number, amount: number) => void;
+  addCart: (productId: number, amount: number) => Promise<void>;
   removeCart: (productId: number) => void;
+  cleanCart: () => void;
 }
 
 interface CartContextProviderProps {
@@ -18,11 +19,25 @@ interface CartContextProviderProps {
 export const CartContext = createContext({} as CartContextData);
 
 export function CartContextProvider({ children }: CartContextProviderProps) {
-  const [cart, dispatch] = useReducer(CartReducer, {
-    products: [],
-    total: 0,
-    totalItems: 0
-  });
+  const [cart, dispatch] = useReducer(
+    CartReducer,
+    {
+      products: [],
+      total: 0,
+      totalItems: 0
+    },
+    () => {
+      const storedCartJSON = localStorage.getItem('@coffee-delivery:cart');
+      if (storedCartJSON) {
+        return JSON.parse(storedCartJSON);
+      }
+      return {
+        products: [],
+        total: 0,
+        totalItems: 0
+      };
+    }
+  );
 
   async function addCart(productId: number, amount: number): Promise<void> {
     const product = await getProductById(productId);
@@ -39,6 +54,14 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     dispatch({ type: ActionType.REMOVE_PRODUCT, payload: { productId } });
   }
 
+  function cleanCart() {
+    dispatch({ type: ActionType.CLEAR_CART });
+  }
+  useEffect(() => {
+    const cartJSON = JSON.stringify(cart);
+    localStorage.setItem('@coffee-delivery:cart', cartJSON);
+  }, [cart]);
+
   return (
     <CartContext.Provider
       value={{
@@ -46,7 +69,8 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
         total: cart.total,
         totalItems: cart.totalItems,
         addCart,
-        removeCart
+        removeCart,
+        cleanCart
       }}
     >
       {children}

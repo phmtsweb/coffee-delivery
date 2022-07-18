@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 interface ProductProps {
   id: number;
   title: string;
@@ -21,4 +23,19 @@ export async function getProductById(
   const result = await fetch(`${BASE_URL}/${productId}`);
   const response: ProductProps | undefined = await result.json();
   return response;
+}
+
+export async function createOrder(order: any): Promise<number> {
+  const response = await axios.post(`http://localhost:3000/orders`, order);
+  const { id } = response.data;
+  const myOrdersJSON = localStorage.getItem('@coffee-delivery:orders');
+  const myOrders = myOrdersJSON ? JSON.parse(myOrdersJSON) : [];
+  myOrders.unshift(id);
+  return id as number;
+}
+
+export async function getOrderById(orderId: number): Promise<any> {
+  const response = await axios.get(`http://localhost:3000/orders/${orderId}`);
+  const order = response.data;
+  return order;
 }

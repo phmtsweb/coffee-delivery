@@ -1,9 +1,9 @@
 import { ButtonContainer } from './styles';
 
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 
 interface MainButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  label: string;
+  label: string | ReactNode;
 }
 
 export function MainButton({ label, ...rest }: MainButtonProps) {

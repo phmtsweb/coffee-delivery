@@ -18,7 +18,8 @@ export interface CartState {
 
 export enum ActionType {
   ADD_PRODUCT = 'ADD_PRODUCT',
-  REMOVE_PRODUCT = 'REMOVE_PRODUCT'
+  REMOVE_PRODUCT = 'REMOVE_PRODUCT',
+  CLEAR_CART = 'CLEAR_CART'
 }
 
 export interface CartActionProps {
@@ -34,7 +35,7 @@ function addProduct(
   amount: number,
   cartState: CartState
 ): CartState {
-  if (amount <= 0) throw Error('Quantidade adicionada inválida');
+  // if (amount <= 0) throw Error('Quantidade adicionada inválida');
   if (product) {
     return produce(cartState, (draft) => {
       const productIndex = draft.products.findIndex(
@@ -52,7 +53,6 @@ function addProduct(
         };
         draft.products.push(productToAdd);
       }
-      console.log(product);
       draft.total += product.price * amount;
       draft.totalItems += amount;
     });
@@ -73,6 +73,14 @@ function removeProduct(productId: number, cartState: CartState): CartState {
   });
 }
 
+function clearCart(cartState: CartState) {
+  return produce(cartState, (draft) => {
+    draft.products.length = 0;
+    draft.total = 0;
+    draft.totalItems = 0;
+  });
+}
+
 export function CartReducer(cartState: CartState, action: any): CartState {
   switch (action.type) {
     case ActionType.ADD_PRODUCT:
@@ -81,6 +89,8 @@ export function CartReducer(cartState: CartState, action: any): CartState {
     case ActionType.REMOVE_PRODUCT:
       const { productId } = action.payload;
       return removeProduct(productId, cartState);
+    case ActionType.CLEAR_CART:
+      return clearCart(cartState);
     default:
       return cartState;
   }

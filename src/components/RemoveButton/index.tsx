@@ -1,9 +1,13 @@
 import { Trash } from 'phosphor-react';
 import { RemoveButtonContainer } from './styles';
 
-export function RemoveButton() {
+interface RemoveButtonProps {
+  removeAction: () => void;
+}
+
+export function RemoveButton({ removeAction }: RemoveButtonProps) {
   return (
-    <RemoveButtonContainer>
+    <RemoveButtonContainer onClick={removeAction}>
       <Trash size={16} />
       <span>REMOVER</span>
     </RemoveButtonContainer>
